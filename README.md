@@ -31,12 +31,13 @@
 ```bash
 [你的项目根目录]/
 ├── User/         <-- (这是从 wechatDataBackup 粘贴过来的文件夹)
-│   ├── [用户ID_1]/
-│   ├── [用户ID_2]/
+│   ├── [用户ID_1]/  <-- (如wxid_12345abcde)
+│   ├── [用户ID_2]/  <-- (你可能不止有一个账号）
 │   └── ...
 ├── examples/
 ├── backend/      
-├── frontend/  
+├── frontend/
+├── requirements.txt 
 └── README.md
 ```
 
