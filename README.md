@@ -1,6 +1,10 @@
 # RScore
+## 🖼️ 效果示例 (Screenshots)
 
-## ⚠️ 重要前提 (Prerequisite)
+![示例图1：对单个好友的数据分析](examples/example_1.png)
+
+![示例图2：对所有好友的数据分析](examples/example_2.png)
+## ⚠️ 重要前提 
 
 本项目的运行**强依赖**于另一个开源项目 `wechatDataBackup` 导出的数据。
 
@@ -34,3 +38,5 @@
 ├── backend/      
 ├── frontend/  
 └── README.md
+
+
