@@ -7,6 +7,10 @@ import dayjs from 'dayjs';
 import 'antd/dist/reset.css';
 import './App.css';
 
+// 在文件顶部添加配置
+const IS_TEST_MODE = false;  // 测试时设为true，正式使用时设为false
+const BATCH_LIMIT = IS_TEST_MODE ? 30 : 0;  // 0表示全部
+
 const { Header, Content } = Layout;
 const { Option } = Select;
 const { TabPane } = Tabs;
@@ -53,17 +57,24 @@ function App() {
     }
   };
 
-  // 批量分析
+  // 批量分析 - 现在一次调用获取所有数据
+  // 保持原有的 runBatchAnalysis 函数不变
+  // runBatchAnalysis 保持原样
   const runBatchAnalysis = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/batch_analysis`);
+      const response = await axios.get(`${API_BASE_URL}/api/batch_analysis?limit=${BATCH_LIMIT}`);
+      
       setBatchAnalysis(response.data);
       
-      // 同时获取用户偏好分析
-      fetchUserPreference();
+      if (response.data.user_preference) {
+        setUserPreference(response.data.user_preference);
+      }
       
-      message.success('批量分析完成！');
+      const successMsg = BATCH_LIMIT > 0 
+        ? `综合分析完成！(测试模式：分析了前${BATCH_LIMIT}人)` 
+        : '综合分析完成！(分析了全部好友)';
+      message.success(successMsg);
     } catch (error) {
       message.error('批量分析失败');
     } finally {
@@ -71,18 +82,30 @@ function App() {
     }
   };
 
-  // 获取用户偏好分析
-  const fetchUserPreference = async () => {
-    setLoadingPreference(true);
-    try {
-      const response = await axios.get(`${API_BASE_URL}/api/user_preference_analysis`);
-      setUserPreference(response.data);
-    } catch (error) {
-      console.error('获取用户偏好失败', error);
-    } finally {
-      setLoadingPreference(false);
-    }
-  };
+  // // 获取用户偏好分析
+  // const fetchUserPreference = async () => {
+  //   setLoadingPreference(true);
+  //   try {
+  //     const response = await axios.get(`${API_BASE_URL}/api/user_preference_analysis`);
+  //     setUserPreference(response.data);
+  //   } catch (error) {
+  //     console.error('获取用户偏好失败', error);
+  //   } finally {
+  //     setLoadingPreference(false);
+  //   }
+  // };
+
+
+// 在按钮区域，你可以选择性地显示测试按钮
+<Button
+  icon={<TeamOutlined />}
+  onClick={runBatchAnalysis}  // 原有功能保持不变
+  loading={loading}
+  style={{ marginRight: 8 }}
+>
+  批量分析
+</Button>
+
 
   // 导出报告
   const exportReport = async () => {
