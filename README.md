@@ -38,5 +38,17 @@
 ├── backend/      
 ├── frontend/  
 └── README.md
+```
 
+### 步骤 3: 安装依赖
+```bash
+pip install -r requirements.txt
+```
 
+### 步骤 4: 启动项目
+```bash
+cd C:\RScore\backend
+python app.py
+cd C:\RScore\frontend
+npm start
+```
