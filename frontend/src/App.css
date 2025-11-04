@@ -1,0 +1,32 @@
+.ant-layout-header h1 {
+  margin: 0;
+  line-height: 64px;
+}
+
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.ant-card-head {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.ant-statistic-content {
+  font-size: 24px;
+}
+
+.ant-timeline-item-content {
+  font-size: 14px;
+}
+
+.ant-progress-text {
+  font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .ant-col {
+    margin-bottom: 16px;
+  }
+}
