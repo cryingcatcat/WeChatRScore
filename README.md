@@ -1,4 +1,4 @@
-# RScore
+# WeChatRScore
 ## 🖼️ 效果示例
 
 ![示例图1：对单个好友的数据分析](examples/example_1.png)
@@ -47,8 +47,8 @@ pip install -r requirements.txt
 
 ### 步骤 4: 启动项目
 ```bash
-cd C:\RScore\backend
+cd C:\WeChatRScore\backend
 python app.py
-cd C:\RScore\frontend
+cd C:\WeChatRScore\frontend
 npm start
 ```
